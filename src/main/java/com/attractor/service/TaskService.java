@@ -10,37 +10,57 @@ import com.attractor.repository.TaskRepository;
 import com.attractor.repository.TimeRepository;
 import com.attractor.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class TaskService {
+
     private final TaskRepository taskRepository;
     private final UserRepository repository;
+//    @Value("${upload.path}")
+//    private String uploadPath;
     private final TimeRepository timeRepository;
 
-    public TaskDto addTask(Long user, TaskAdd form) {
+    public TaskDto addTask( Long user, TaskAdd form) {
         var users = repository.findById(user)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found User with email = " + user));
+//        if (file != null) {
+//            File uploadDir = new File(uploadPath);
+//            if (!uploadDir.exists()) {
+//                uploadDir.mkdir();
+//            }
+//            String uuidFile = UUID.randomUUID().toString();
+//            String resultFileName = uuidFile + "." + file.getOriginalFilename();
+//
+//
+//            file.transferTo(new File(resultFileName));
+
+            var task = Task.builder()
+                    .user(users)
+                    .localDate(LocalDate.now())
+                    .name(form.getName())
+                    .status(form.getStatus())
+                    .build();
+
+            taskRepository.save(task);
+
+            return TaskDto.from(task);
+        }
 
 
-        var task = Task.builder()
-                .user(users)
-                .localDate(LocalDate.now())
-                .name(form.getName())
-                .status(form.getStatus())
-                .build();
 
-       taskRepository.save(task);
-
-        return TaskDto.from(task);
-    }
 
     public List<TaskDto> findByEmail(String email) {
         return taskRepository.find(email)

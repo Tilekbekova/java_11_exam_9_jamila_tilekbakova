@@ -35,4 +35,8 @@ public class Task {
    @JoinColumn(name = "status")
    private String status;
 
+
+   @JoinColumn(name = "file")
+   private String file;
+
 }

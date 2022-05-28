@@ -1,0 +1,1 @@
+ALter table task_table add column file varchar(255)

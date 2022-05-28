@@ -78,10 +78,12 @@
             <p> <@spring.message "title"></@spring.message>: ${product.task.name}</p>
             <p> <@spring.message "feedbacks"></@spring.message>: ${product.description}</p>
             <p> <@spring.message "dat"></@spring.message>: ${product.localTime}</p>
+            <a href=»/showTask.pdf» download>Скачать файл</a>
         <#else>
             <h1><@spring.message "noProducts"></@spring.message></h1>
         </#list>
     </#if>
+
 
 
 
