@@ -52,7 +52,7 @@
             </#if>
             <div>
                 <label class="flex flex-v-center">
-                    <p class="label-input-text">user</p>
+                    <p class="label-input-text">userID</p>
                     <input type="text" name="user" value="${(dto.user)!''}">
                 </label>
             </div>
