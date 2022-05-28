@@ -1,0 +1,1 @@
+Drop table workloqs_table CASCADE;
