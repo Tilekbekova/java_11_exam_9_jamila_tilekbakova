@@ -17,6 +17,10 @@
                     <a class="nav-link"
                        href="http://localhost:8080/find"><@spring.message "search"></@spring.message></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="http://localhost:8080/register"><@spring.message "registration"></@spring.message></a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://localhost:8080/login" id="navbarScrollingDropdown"
                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,8 +66,12 @@
 
             <div>
                 <label class="flex flex-v-center">
-                    <p class="label-input-text">role</p>
-                    <input type="text" name="role" value="${(dto.role)!''}">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Role</option>
+                        <input type="text" name="role" value="${(dto.role)!''}">
+
+
+                    </select>
                 </label>
             </div>
             <div>

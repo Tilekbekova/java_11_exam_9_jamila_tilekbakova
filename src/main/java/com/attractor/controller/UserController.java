@@ -80,14 +80,14 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = {"", "/"})
+    @RequestMapping(value = {"", "/showTask"})
     public String logout(HttpServletRequest request) {
         SecurityContextHolder.clearContext();
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
         }
-        return "redirect:" + "/register";
+        return "redirect:" + "/showTask";
     }
 
 

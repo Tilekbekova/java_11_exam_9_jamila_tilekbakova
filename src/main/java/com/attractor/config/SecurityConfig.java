@@ -44,12 +44,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
         http.logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/order.ftlh")
+                .logoutSuccessUrl("/showTask")
                 .clearAuthentication(true)
                 .invalidateHttpSession(true);
 
         http.authorizeRequests()
-                .antMatchers("/show","/order","/show/insert","/add","/basket","/showBasket")
+                .antMatchers("/showTask","/change/**","/time/**","/add","/basket","/showBasket")
                 .authenticated();
 
         http.authorizeRequests()

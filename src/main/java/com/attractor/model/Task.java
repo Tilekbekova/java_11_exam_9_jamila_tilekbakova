@@ -15,12 +15,14 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+@Builder
 public class Task {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
    @Column(length = 20)
    private String name;
+
    @Column(name = "dateAdd")
    private LocalDate localDate;
 
@@ -29,9 +31,8 @@ public class Task {
    @JoinColumn(name = "user_id")
    private User user;
 
-   @ManyToOne()
-   @OnDelete(action = OnDeleteAction.CASCADE)
-   @JoinColumn(name = "status_id")
-   private Status status;
+
+   @JoinColumn(name = "status")
+   private String status;
 
 }

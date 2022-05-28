@@ -15,6 +15,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @ToString
+@Builder
 public class Worklogs{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +31,11 @@ public class Worklogs{
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "task_id")
     private Task task;
+
+
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }
